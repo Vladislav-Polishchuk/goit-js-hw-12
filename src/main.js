@@ -23,7 +23,14 @@ let loadedImages = 0;
 form.addEventListener('submit', async e => {
   e.preventDefault();
   query = e.target.elements.searchQuery.value.trim();
-  if (!query) return;
+
+  if (!query) {
+    iziToast.warning({
+      message: 'Please enter a search query.',
+      position: 'topRight',
+    });
+    return;
+  }
 
   page = 1;
   clearGallery();
